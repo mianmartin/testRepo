@@ -1,0 +1,62 @@
+--------------------------------------------
+--       pigbootup file: @Brainsins       --
+--------------------------------------------
+
+-- this is the pigbootup script contains commons libs and define functions
+-- the location path must be define in pig.properties
+
+--------------------/Users/mamartin/Desarrollo/pig_scripts/common_pig/.pigbootup------------------------
+----  register libraries dependecies      --
+--------------------------------------------
+
+-- Register Piggy bank, elephant-birt and pigmalyon udfs libraries
+
+--register /Users/mamartin/Desarrollo/libsCassandraPig/piggybank.jar;
+--
+
+-- Register Piggy bank
+register '/Users/mamartin/Desarrollo/libsCassandraPig/piggybank.jar';
+register '/Users/mamartin/Desarrollo/libsCassandraPig/elephant-bird-pig-3.0.7.jar';
+register '/Users/mamartin/Desarrollo/libsCassandraPig/json-simple-1.1.jar';
+-- not in use => register '/Users/mamartin/Desarrollo/libsCassandraPig/pygmalion.jar';
+
+-- not in use => Register MySQL driver
+-- not in use => register '/Users/mamartin/Desarrollo/libsCassandraPig/mysql-connector-java-5.1.21-bin.jar';
+
+--register libs needed in pig_cassandra
+register '/Users/mamartin/Desarrollo/libsCassandraPig/frontentOnly/libthrift-0.7.0.jar';
+register '/Users/mamartin/Desarrollo/libsCassandraPig/frontentOnly/apache-cassandra-thrift-1.2.0-SNAPSHOT.jar';
+register '/Users/mamartin/Desarrollo/libsCassandraPig/frontentOnly/apache-cassandra-1.2.0-SNAPSHOT.jar';
+register '/Users/mamartin/Desarrollo/libsCassandraPig/frontentOnly/guava-13.0.1.jar';
+
+--joda-time-1.6.jar
+register '/Users/mamartin/Desarrollo/libsCassandraPig/joda-time-1.6.jar';
+
+-- register piggibank amazon time funtionalities
+
+register /Users/mamartin/Desarrollo/libsCassandraPig/piggybank-0.3-amzn.jar
+--register /Users/mamartin/Desarrollo/libsCassandraPig/google-collect-1.0.jar
+
+
+register /Users/mamartin/Desarrollo/libsCassandraPig/akela-0.5-SNAPSHOT-jar-with-dependencies.jar
+
+
+
+-- register and define piggybank Brainsins udfs
+
+register '/Users/mamartin/Desarrollo/libsCassandraPig/piggybank-brainsins.jar';
+
+
+--------------------------------------------
+----        define functions              --
+--------------------------------------------
+
+define CassandraStorage org.apache.cassandra.hadoop.pig.CassandraStorage();
+
+define JsonStringToMap com.twitter.elephantbird.pig.piggybank.JsonStringToMap();
+
+
+define MultiFilterStorage com.brainsins.pig.udfs.storage.MultiFilterStorage();
+
+define CqlStorage org.apache.cassandra.hadoop.pig.CqlStorage();
+
